@@ -1,4 +1,4 @@
-# Vehicle CO2 Emissions Segmentation Analysis And Predictive Modelling
+# Vehicle CO2 Emissions: Segmentation Analysis And Predictive Modelling
 
 This project looks at vehicle CO2 emissions using technical specs, based on the EPA Fuel Economy Guide dataset. It combines two methods — clustering (to find groups) and regression (to predict a number) — and tests each design choice with data instead of just guessing.
 
