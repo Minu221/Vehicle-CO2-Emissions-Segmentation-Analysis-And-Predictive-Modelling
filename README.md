@@ -56,6 +56,10 @@ Instead of using all 18 original columns, features were chosen carefully, for tw
 
 **Removed — leaks the answer (confirmed with a chart):**
 `Greenhouse Gas Score` has an almost perfect straight-line relationship with `Comb CO2` — it's basically CO2 rewritten as a score by EPA, not new information. `SmartWay` is a label built from cutoffs on this same score, so it was removed for the same reason.
+<img width="802" height="662" alt="image" src="https://github.com/user-attachments/assets/9761c680-1aa7-4593-bd98-627d4dece40a" />
+
+<img width="937" height="417" alt="image" src="https://github.com/user-attachments/assets/4ca22d09-6420-42d1-8f8f-6852ff6ffdd1" />
+
 
 **Removed — not a real spec of the car:**
 `Air Pollution Score` only has a weak, scattered relationship with CO2 (not leakage in the strict sense), but it's a *rating* for other pollutants (like NOx), not a *spec* of the car itself, so it was left out to keep the feature list focused on pure technical specs.
@@ -78,6 +82,8 @@ Instead of using all 18 original columns, features were chosen carefully, for tw
 ### Part 1 — Segmentation (K-means Clustering)
 - Clustering only used **technical specs** — `Comb CO2` was left out of the clustering input, and only used afterward to describe what each group means.
 - The best number of groups (`k`) was picked using the Elbow method and Silhouette score together. `k=2` had the best silhouette score, but was too simple to be useful; `k=5` was chosen because it's a strong local peak in silhouette score with a clear "elbow" in the inertia chart — a good balance between quality and detail.
+  <img width="1041" height="317" alt="image" src="https://github.com/user-attachments/assets/5266ff62-9b90-40a1-9626-eb3031f88009" />
+
 - Group assignment: `KMeans.fit()` only on the training set, `.predict()` on the test set
 ### Part 2 — Prediction (Regression)
 - Two models were trained and compared: **Linear Regression** (simple, easy to explain) and **Random Forest** (can capture more complex, non-straight-line patterns).
@@ -90,6 +96,8 @@ Instead of using all 18 original columns, features were chosen carefully, for tw
 ## Results
 
 ### Part 1 — Five Vehicle Groups Found
+<img width="530" height="400" alt="image" src="https://github.com/user-attachments/assets/593c73e6-9f24-4dab-b752-3c0aa1089652" />
+
 
 | Cluster | Name | What it looks like | Average CO2 |
 |:---:|---|---|---:|
